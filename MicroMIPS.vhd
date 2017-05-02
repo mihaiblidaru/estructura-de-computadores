@@ -187,7 +187,7 @@ begin
     JumpMux32D1      <= (Suma4Sal(31 downto 28) & MemProgData(25 downto 0) & "00"); -- Calcular JumpTarget
     PCSrcMux32D1     <= ((ExtSignSal(29 downto 0) & "00") + Suma4Sal);    --Calcular Branch Target
 
-    -- instancia de la unidad de control
+    -- Instancia de la unidad de control
     Inst_UnidadControl: UnidadControl PORT MAP(
         OPCode     => MemProgData(31 downto 26),
         Funct      => MemProgData(5  downto 0),
@@ -204,6 +204,7 @@ begin
         PCToReg    => PCToRegCtrl
     );
 
+    -- Instancia de la ALU
     Inst_ALUMIPS: ALUMIPS PORT MAP(
         Op1        => Rd1,
         Op2        => ALUSrcMux32Sal,
