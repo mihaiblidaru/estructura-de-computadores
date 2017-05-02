@@ -253,7 +253,7 @@ begin
         Q   => Suma4Sal
     );
 
-
+    -- Instancia Mux32 - Cuando la señal de control está activa (instruccion beq) al ProgramCounter le llega el BTA
     Inst_PCSrcMux32: Mux32 PORT MAP(
         D0  => Suma4Sal,
         D1  => PCSrcMux32D1,
@@ -261,6 +261,7 @@ begin
         Z   =>  PCSrcMux32Sal
     );
 
+    -- Instancia Mux32 - Cuando la señal de control está activa (instruccion jump) al ProgramCounter le llega el JumpTarget
     Inst_JumpMux32: Mux32 PORT MAP(
         D0  => PCSrcMux32Sal,
         D1  => JumpMux32D1,
@@ -268,6 +269,7 @@ begin
         Z   => JumpMux32Sal
     );
 
+    -- Instancia Mux32 - Cuando la señal de control está a '1' RD1 se conecta el Program Counter (en instrucciones jr)
     Inst_RegToPcMux32: Mux32 PORT MAP(
         D0  => JumpMux32Sal,
         D1  => Rd1,
