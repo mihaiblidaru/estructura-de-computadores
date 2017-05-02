@@ -213,6 +213,7 @@ begin
         Z          => ALUZSal
     );
 
+    -- Instancia del Banco de Registros
     Inst_RegsMIPS: RegsMIPS PORT MAP(
         Clk  => Clk,
         NRst => NRst,
@@ -225,16 +226,19 @@ begin
         Rd2  => Rd2
     );
 
+    -- Insancia del extesor de ceros
     Inst_ExtCero: ExtCero PORT MAP(
         Ent  => MemProgData(15 downto 0),
         Sal  => ExtCeroSal
     );
 
+    -- Instancia del extesor de signo
     Inst_ExtSign: ExtSign PORT MAP(
         Ent  => MemProgData(15 downto 0),
         Sal  => ExtSignSal
     );
 
+    -- Instancia del Program Counter
     Inst_ProgCount: ProgCount PORT MAP(
         Q    => ProgCountSal,
         D    => RegToPCMux32Sal,
@@ -242,6 +246,7 @@ begin
         NRst => NRst
     );
 
+    -- Instancia del Sumador + 4
     Inst_Suma4: Suma4 PORT MAP(
         D   => ProgCountSal,
         Q   => Suma4Sal
