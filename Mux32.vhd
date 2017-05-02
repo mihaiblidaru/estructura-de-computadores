@@ -17,7 +17,7 @@ use IEEE.std_LOGIC_arith.ALL;
 use IEEE.std_logic_signed.ALL;
 
 entity Mux32 is
-    Port (  Port ( D0  : in  STD_LOGIC_VECTOR (31 downto 0);   -- Entrada 0
+    Port (   D0  : in  STD_LOGIC_VECTOR (31 downto 0);   -- Entrada 0
   			     D1  : in  STD_LOGIC_VECTOR (31 downto 0);         -- Entrada 1
   			     Sel : in  STD_LOGIC;                              -- Señal de control
              Z   : out STD_LOGIC_VECTOR (31 downto 0)          -- Salida
