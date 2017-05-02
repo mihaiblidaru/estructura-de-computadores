@@ -1,7 +1,7 @@
 ----------------------------------------------------------------------
--- Fichero: ExtSign.vhd
--- Descripci贸n: 
--- Fecha 煤ltima modificaci贸n: 02/03/2017
+-- Fichero: ExtCero.vhd
+-- Descripci贸n:
+-- Fecha 煤ltima modificaci贸n: 02/05/2017
 -- Autores: Juan Felipe Carreto & Mihai Blidaru
 -- Pareja: 06
 -- Asignatura: E.C. 1潞 grado
@@ -17,7 +17,7 @@ use IEEE.std_LOGIC_arith.ALL;
 use IEEE.std_logic_signed.ALL;
 
 entity ExtCero is
-    Port ( Ent : in  STD_LOGIC_VECTOR (15 downto 0);    -- Entrada de 16 bits 
+    Port ( Ent : in  STD_LOGIC_VECTOR (15 downto 0);    -- Entrada de 16 bits
            Sal : out STD_LOGIC_VECTOR (31 downto 0)     -- Salida de 32 bits
     );
 end ExtCero;
@@ -26,7 +26,6 @@ architecture Behavioral of ExtCero is
 
 begin
 
-    Sal <= (31 downto 16 => '0') & Ent;             -- A馻de 16 ceros en los primeros 16 bits de la salida
+    Sal <= (31 downto 16 => '0') & Ent;             -- A帽ade 16 ceros en los primeros 16 bits de la salida
 
 end Behavioral;
-
