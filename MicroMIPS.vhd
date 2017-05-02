@@ -1,14 +1,14 @@
 ----------------------------------------------------------------------
--- Fichero: Suma4.vhd
--- Descripción: Circuito combinacionar que añade +4 al numero que recibe como entrada
--- Fecha última modificación: 02/03/2017
+-- Fichero: MicroMIPS.vhd
+-- Descripción: Microprocesador MIPS Uniciclo con juego de instrucciones reducido
+-- Fecha última modificación: 02/05/2017
 -- Autores: Juan Felipe Carreto & Mihai Blidaru
 -- Pareja: 06
 -- Asignatura: E.C. 1º grado
 -- Grupo de Prácticas: 2121
 -- Grupo de Teoría: 212
--- Práctica: 2
--- Ejercicio: 2
+-- Práctica: 4
+-- Ejercicio: 3
 ----------------------------------------------------------------------
 
 library IEEE;
@@ -29,7 +29,8 @@ entity MicroMIPS is
 end MicroMIPS;
 
 architecture Practica of MicroMIPS is
-    --salidas registros
+
+    -- salidas registros
     signal Rd1  : std_logic_vector(31 downto 0);
     signal Rd2  : std_logic_vector(31 downto 0);
 
@@ -76,8 +77,8 @@ architecture Practica of MicroMIPS is
     signal Suma4Sal :  std_logic_vector(31 downto 0);
 
     -- salidas extensores signo - ceros
-    signal ExtCeroSal : std_logic_vector(31 downto 0);
     signal ExtSignSal : std_logic_vector(31 downto 0);
+    signal ExtCeroSal : std_logic_vector(31 downto 0);
 
     -- Declaración de la Uniddad de Control
     COMPONENT UnidadControl
@@ -274,6 +275,7 @@ begin
         Z   => RegToPcMux32Sal
     );
 
+    -- Instancia Mux32 - Elige como opedando de la ALU entre la salida del extensor de signo o la salida del extensor de ceros
     Inst_ExtCeroMux32: Mux32 PORT MAP(
         D0  => ExtSignSal,
         D1  => ExtCeroSal,
@@ -281,6 +283,7 @@ begin
         Z   => ExtCeroMux32Sal
     );
 
+    -- Instancia Mux32 - Elije como segundo opedando para la ALU entre la salida RD2 del registro o un dato inmediato
     Inst_ALUSrcMux32: Mux32 PORT MAP(
         D0  => Rd2,
         D1  => ExtCeroMux32Sal,
@@ -302,6 +305,7 @@ begin
         Z   => PCToRegMux32Sal
     );
 
+    -- Instancia Mux5 Elije como direccion del registro de destino los bits(20-16) o los bits(15-11) de la instruccion
     Inst_RegDestMux5: Mux5 PORT MAP(
         D0  => MemProgData(20 downto 16),
         D1  => MemProgData(15 downto 11),
@@ -309,6 +313,7 @@ begin
         Z   => RegDestMux5Sal
         );
 
+    -- Instancia Mux5 Elige como registro de destino entre la señal suministrda por el multiplexor RegDest y el registro 31
     Inst_PCToRegMux5: Mux5 PORT MAP(
         D0  => RegDestMux5Sal,
         D1  => "11111",
