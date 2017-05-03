@@ -46,51 +46,19 @@ begin
 			memData(i) <= (others => '0');
 		end loop;
 		-- Cada palabra ocupa 4 bytes
-		memData(conv_integer(X"00002000")/4) <= X"00000002";    -- 2
+		memData(conv_integer(X"00002000")/4) <= X"00000006";    -- N = 6
 		memData(conv_integer(X"00002004")/4) <= X"00000002";    -- 2
 		memData(conv_integer(X"00002008")/4) <= X"00000004";    -- 4
 		memData(conv_integer(X"0000200C")/4) <= X"00000006";    -- 6
-		memData(conv_integer(X"00002010")/4) <= X"00000005";    -- 5
-		memData(conv_integer(X"00002014")/4) <= X"00000006";    -- 5
-		memData(conv_integer(X"00002018")/4) <= X"00000007";    -- 7
-		memData(conv_integer(X"0000201C")/4) <= X"00000008";    -- 8
-		memData(conv_integer(X"00002020")/4) <= X"00000009";    -- 9
-		memData(conv_integer(X"00002024")/4) <= X"0000000a";    -- 10
-    -- los para poder cambiar datos facilmente
-		memData(conv_integer(X"00002028")/4) <= X"00000000";    -- 0
-		memData(conv_integer(X"0000202C")/4) <= X"00000000";    -- 0
-		memData(conv_integer(X"00002030")/4) <= X"00000000";    -- 0
-		memData(conv_integer(X"00002034")/4) <= X"00000000";    -- 0
-		memData(conv_integer(X"00002038")/4) <= X"00000000";    -- 0
-		memData(conv_integer(X"0000203C")/4) <= X"00000000";    -- 0
-		memData(conv_integer(X"00002040")/4) <= X"00000000";    -- 0
-		memData(conv_integer(X"00002044")/4) <= X"00000000";    -- 0
-		memData(conv_integer(X"00002048")/4) <= X"00000000";    -- 0
-		memData(conv_integer(X"0000204C")/4) <= X"00000000";    -- 0
-		---------------------------------------------------
-		memData(conv_integer(X"00002050")/4) <= X"ffffffff";    -- -1
-		memData(conv_integer(X"00002054")/4) <= X"fffffffb";    -- -5
-		memData(conv_integer(X"00002058")/4) <= X"00000004";    -- 4
-		memData(conv_integer(X"0000205C")/4) <= X"0000000a";    -- 10
-		memData(conv_integer(X"00002060")/4) <= X"00000001";    -- 1
-		memData(conv_integer(X"00002064")/4) <= X"fffffffe";    -- -2
-		memData(conv_integer(X"00002068")/4) <= X"00000005";    -- 5
-		memData(conv_integer(X"0000206C")/4) <= X"0000000a";    -- 10
-		memData(conv_integer(X"00002070")/4) <= X"fffffff6";    -- -10
-		memData(conv_integer(X"00002074")/4) <= X"00000000";    -- 0
-		-- los para poder cambiar datos facilmente
-		memData(conv_integer(X"00002078")/4) <= X"00000000";    -- 0
-		memData(conv_integer(X"0000207C")/4) <= X"00000000";    -- 0
-		memData(conv_integer(X"00002080")/4) <= X"00000000";    -- 0
-		memData(conv_integer(X"00002084")/4) <= X"00000000";    -- 0
-		memData(conv_integer(X"00002088")/4) <= X"00000000";    -- 0
-		memData(conv_integer(X"0000208C")/4) <= X"00000000";    -- 0
-		memData(conv_integer(X"00002090")/4) <= X"00000000";    -- 0
-		memData(conv_integer(X"00002094")/4) <= X"00000000";    -- 0
-		memData(conv_integer(X"00002098")/4) <= X"00000000";    -- 0
-		memData(conv_integer(X"0000209C")/4) <= X"00000000";    -- 0
-		---------------------------------------------------
-		memData(conv_integer(X"000020F0")/4) <= X"0000000a";    -- N = 10
+		memData(conv_integer(X"00002010")/4) <= X"00000008";    -- 8
+		memData(conv_integer(X"00002014")/4) <= X"0000000a";    -- 10
+		memData(conv_integer(X"00002018")/4) <= X"0000000c";    -- 12
+		memData(conv_integer(X"0000201C")/4) <= X"ffffffff";    -- -1
+		memData(conv_integer(X"00002020")/4) <= X"fffffffb";    -- -5
+		memData(conv_integer(X"00002024")/4) <= X"00000004";    -- 4
+    memData(conv_integer(X"00002028")/4) <= X"0000000a";    -- 10
+		memData(conv_integer(X"0000202C")/4) <= X"00000001";    -- 1
+		memData(conv_integer(X"00002030")/4) <= X"fffffffb";    -- 0
 
 	elsif rising_edge(Clk) then
 		-- En este caso se escribe por flanco de bajada para que sea
