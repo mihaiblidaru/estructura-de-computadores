@@ -29,8 +29,9 @@ Fin:
     j Fin                # Fin del programa
     
 .data
-A: .word 2, 2, 4, 6, 5, 6, 7, 8, 9, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0           # array A
-B: .word -1, -5, 4, 10, 1, -2, 5, 10, -10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0     # array B
-C: .space 80    # array C
-N: .word 10     # número de iteraciones del bucle
+N: .word 6     # número de iteraciones del bucle
+A: .word  2,  4, 6,  8, 10, 12    # array A
+B: .word -1, -5, 4, 10,  1, -5    # array B
+C: .space 24    # array C
+
 
